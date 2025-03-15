@@ -25,6 +25,30 @@
       "PackagePath": "staticwebassets\\index.html"
     },
     {
+      "Id": "C:\\Gokstad\\AlgoritmerH24\\Emne6SoftwareDesign\\Innleveringsfolder\\E6Konte\\E6Ko\\wwwroot\\lib\\bootstrap-icons\\css\\bootstrap-icons.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-icons\\css\\bootstrap-icons.css"
+    },
+    {
+      "Id": "C:\\Gokstad\\AlgoritmerH24\\Emne6SoftwareDesign\\Innleveringsfolder\\E6Konte\\E6Ko\\wwwroot\\lib\\bootstrap-icons\\css\\bootstrap-icons.json",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-icons\\css\\bootstrap-icons.json"
+    },
+    {
+      "Id": "C:\\Gokstad\\AlgoritmerH24\\Emne6SoftwareDesign\\Innleveringsfolder\\E6Konte\\E6Ko\\wwwroot\\lib\\bootstrap-icons\\css\\bootstrap-icons.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-icons\\css\\bootstrap-icons.min.css"
+    },
+    {
+      "Id": "C:\\Gokstad\\AlgoritmerH24\\Emne6SoftwareDesign\\Innleveringsfolder\\E6Konte\\E6Ko\\wwwroot\\lib\\bootstrap-icons\\css\\bootstrap-icons.scss",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-icons\\css\\bootstrap-icons.scss"
+    },
+    {
+      "Id": "C:\\Gokstad\\AlgoritmerH24\\Emne6SoftwareDesign\\Innleveringsfolder\\E6Konte\\E6Ko\\wwwroot\\lib\\bootstrap-icons\\fonts\\bootstrap-icons.woff",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-icons\\fonts\\bootstrap-icons.woff"
+    },
+    {
+      "Id": "C:\\Gokstad\\AlgoritmerH24\\Emne6SoftwareDesign\\Innleveringsfolder\\E6Konte\\E6Ko\\wwwroot\\lib\\bootstrap-icons\\fonts\\bootstrap-icons.woff2",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-icons\\fonts\\bootstrap-icons.woff2"
+    },
+    {
       "Id": "C:\\Gokstad\\AlgoritmerH24\\Emne6SoftwareDesign\\Innleveringsfolder\\E6Konte\\E6Ko\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },

@@ -7,6 +7,8 @@ C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\bin
 C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\bin\Debug\net9.0\wwwroot\_framework\dotnet.native.9msu8ucn2h.wasm
 C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\bin\Debug\net9.0\wwwroot\_framework\dotnet.runtime.qrl1fuqt3c.js
 C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\bin\Debug\net9.0\wwwroot\_framework\dotnet.runtime.js.map
+C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\bin\Debug\net9.0\wwwroot\_framework\E6Ko.vbaddhqqlx.pdb
+C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\bin\Debug\net9.0\wwwroot\_framework\E6Ko.67d60is50h.wasm
 C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\bin\Debug\net9.0\wwwroot\_framework\icudt_CJK.tjcz0u77k5.dat
 C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\bin\Debug\net9.0\wwwroot\_framework\icudt_EFIGS.tptq2av103.dat
 C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\bin\Debug\net9.0\wwwroot\_framework\icudt_no_CJK.lfu7j35m59.dat
@@ -352,6 +354,7 @@ C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\bin
 C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\bin\Debug\net9.0\wwwroot\_framework\System.Xml.ev8p5vqcxx.wasm.gz
 C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\bin\Debug\net9.0\wwwroot\_framework\Microsoft.Extensions.DependencyInjection.Abstractions.uyeezc5cxb.wasm.gz
 C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\bin\Debug\net9.0\wwwroot\_framework\System.Threading.Tasks.Dataflow.qux3elp3sq.wasm.gz
+C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\bin\Debug\net9.0\wwwroot\_framework\E6Ko.vbaddhqqlx.pdb.gz
 C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\bin\Debug\net9.0\wwwroot\_framework\System.Private.Xml.2mep7n6yu4.wasm.gz
 C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\bin\Debug\net9.0\wwwroot\_framework\System.Memory.80u0qc3eyv.wasm.gz
 C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\bin\Debug\net9.0\wwwroot\_framework\System.Net.WebProxy.zg8yqia6rm.wasm.gz
@@ -391,6 +394,7 @@ C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\bin
 C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\bin\Debug\net9.0\wwwroot\_framework\Microsoft.CSharp.qzjvm9hz38.wasm.gz
 C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\bin\Debug\net9.0\wwwroot\_framework\System.IO.FileSystem.Watcher.lohvs8m8cz.wasm.gz
 C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\bin\Debug\net9.0\wwwroot\_framework\System.Numerics.90814qnc69.wasm.gz
+C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\bin\Debug\net9.0\wwwroot\_framework\E6Ko.67d60is50h.wasm.gz
 C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\bin\Debug\net9.0\wwwroot\_framework\System.Security.88p4kjqbas.wasm.gz
 C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\bin\Debug\net9.0\wwwroot\_framework\System.Collections.k7eocx66k5.wasm.gz
 C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\bin\Debug\net9.0\wwwroot\_framework\System.Private.Xml.Linq.pznij1v87w.wasm.gz
@@ -815,7 +819,11 @@ C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\obj
 C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\obj\Debug\net9.0\scopedcss\projectbundle\E6Ko.bundle.scp.css
 C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\obj\Debug\net9.0\blazor.build.boot-extension.json
 C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\obj\Debug\net9.0\blazor.boot.json
-C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\obj\Debug\net9.0\compressed\tqkn17mhqg-9kvhtzos83.gz
+C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\obj\Debug\net9.0\compressed\7v51pqs13x-e64qhtzf06.gz
+C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\obj\Debug\net9.0\compressed\tqkn17mhqg-zr192r7w0p.gz
+C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\obj\Debug\net9.0\compressed\kt722o70ya-ho0d1k5s6r.gz
+C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\obj\Debug\net9.0\compressed\md74qe9foc-4udlh72t27.gz
+C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\obj\Debug\net9.0\compressed\z3hh0e9780-26f9b7qkas.gz
 C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\obj\Debug\net9.0\compressed\5b0x8193tj-bqjiyaj88i.gz
 C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\obj\Debug\net9.0\compressed\z9dvtkkv9h-c2jlpeoesf.gz
 C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\obj\Debug\net9.0\compressed\8w0fanb6wf-erw9l3u2r3.gz
@@ -1065,6 +1073,9 @@ C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\obj
 C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\obj\Debug\net9.0\compressed\kr248irpxt-tjcz0u77k5.gz
 C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\obj\Debug\net9.0\compressed\02cik7spcg-tptq2av103.gz
 C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\obj\Debug\net9.0\compressed\1u8bcubf0l-lfu7j35m59.gz
+C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\obj\Debug\net9.0\compressed\xdnw4iy3pg-67d60is50h.gz
+C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\obj\Debug\net9.0\compressed\pvtxw0hkb9-vbaddhqqlx.gz
+C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\obj\Debug\net9.0\compressed\rwwzz4th34-04vtolenhz.gz
 C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\obj\Debug\net9.0\staticwebassets.build.json
 C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\obj\Debug\net9.0\staticwebassets.development.json
 C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\obj\Debug\net9.0\staticwebassets.build.endpoints.json
@@ -1079,11 +1090,3 @@ C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\obj
 C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\obj\Debug\net9.0\refint\E6Ko.dll
 C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\obj\Debug\net9.0\E6Ko.pdb
 C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\obj\Debug\net9.0\ref\E6Ko.dll
-C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\bin\Debug\net9.0\wwwroot\_framework\E6Ko.na1sc9gp5c.pdb
-C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\bin\Debug\net9.0\wwwroot\_framework\E6Ko.rb02sb1qdc.wasm
-C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\bin\Debug\net9.0\wwwroot\_framework\E6Ko.na1sc9gp5c.pdb.gz
-C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\bin\Debug\net9.0\wwwroot\_framework\E6Ko.rb02sb1qdc.wasm.gz
-C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\obj\Debug\net9.0\compressed\7v51pqs13x-e64qhtzf06.gz
-C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\obj\Debug\net9.0\compressed\xdnw4iy3pg-rb02sb1qdc.gz
-C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\obj\Debug\net9.0\compressed\pvtxw0hkb9-na1sc9gp5c.gz
-C:\Gokstad\AlgoritmerH24\Emne6SoftwareDesign\Innleveringsfolder\E6Konte\E6Ko\obj\Debug\net9.0\compressed\rwwzz4th34-lt8e5xggj6.gz
