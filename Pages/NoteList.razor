@@ -1,45 +1,77 @@
 @page "/notelist"
-
 <PageTitle>NoteList</PageTitle>
 
 <h1>NoteList</h1>
 
-
-<div class="accordion" id="accordionExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        Accordion Item #1
-      </button>
-    </h2>
-    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        Accordion Item #2
-      </button>
-    </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-        Accordion Item #3
-      </button>
-    </h2>
-    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-      </div>
-    </div>
-  </div>
+<div class="accordion" id="noteAccordion">
+    @foreach (var note in Notes)
+    {
+        <div class="accordion-item @(note.IsEmpty ? "empty-note" : "")">
+            <h2 class="accordion-header">
+                <button class="accordion-button @(note.IsCollapsed ? "collapsed" : "")" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseNote@(note.Id)" aria-expanded="@(!note.IsCollapsed)" aria-controls="collapseNote@(note.Id)">
+                    Note@(note.Id) - "@(note.Text ?? "Empty")"
+                </button>
+            </h2>
+            <div id="collapseNote@(note.Id)" class="accordion-collapse collapse @(note.IsCollapsed ? "" : "show")" data-bs-parent="#noteAccordion">
+                <div class="accordion-body">
+                    <p>@(note.Text ?? "No content yet.")</p>
+                    <button class="btn btn-outline-secondary edit-btn" @onclick="() => EditNote(note.Id)">
+                        <i class="bi bi-pencil-square"></i> Edit
+                    </button>
+                </div>
+            </div>
+        </div>
+    }
 </div>
+
+@code {
+    private class Note
+    {
+        public int Id { get; set; }
+        public string? Text { get; set; } // Changed to nullable string
+        public bool IsCollapsed { get; set; } = true;
+        public bool IsEmpty => string.IsNullOrWhiteSpace(Text);
+    }
+
+    private List<Note> Notes { get; set; } = new List<Note>
+    {
+        new Note { Id = 1, Text = "Meeting Notes", IsCollapsed = false },
+        new Note { Id = 2, Text = null },
+        new Note { Id = 3, Text = null },
+        new Note { Id = 4, Text = null }
+    };
+
+    protected override void OnInitialized()
+    {
+        UpdateNotes();
+    }
+
+    private void UpdateNotes()
+    {
+        var noteCount = Notes.Count(n => !n.IsEmpty);
+        Notes = Notes.Take(10).ToList(); // Limit to 10 notes
+
+        if (noteCount < 3)
+        {
+            // Ensure at least 3 empty notes if less than 3 notes with content
+            while (Notes.Count < 3 || (Notes.Count < 10 && Notes.Last().IsEmpty))
+            {
+                Notes.Add(new Note { Id = Notes.Count + 1, Text = null });
+            }
+        }
+        else if (Notes.Count < 10)
+        {
+            // After 3 notes with content, add 1 empty note
+            if (Notes.Last().IsEmpty && Notes.Count(n => n.IsEmpty) == 1) return;
+            Notes.Add(new Note { Id = Notes.Count + 1, Text = null });
+        }
+    }
+
+    private void EditNote(int id)
+    {
+        // Placeholder for edit functionality
+        Console.WriteLine($"Editing Note {id}");
+        // You can navigate to an edit page or open a modal here
+    }
+}

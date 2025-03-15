@@ -1,16 +1,21 @@
 ﻿@inherits LayoutComponentBase
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
+@inject AppState AppState
+@using E6Ko.Services
 
-    <main>
-        <div class="top-row">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+<CascadingValue Value="AppState">
+    <div class="page">
+        <div class="sidebar">
+            <NavMenu />
         </div>
 
-        <article class="content">
-            @Body
-        </article>
-    </main>
-</div>
+        <main>
+            <div class="top-row">
+                <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+            </div>
+
+            <article class="content">
+                @Body
+            </article>
+        </main>
+    </div>
+</CascadingValue>

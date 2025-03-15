@@ -2,6 +2,7 @@ html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+
 .content {
     padding-top: 1.1rem;
 }
@@ -22,7 +23,7 @@ html, body {
     color-scheme: light only;
     background: lightyellow;
     bottom: 0;
-    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 -1px 2px rgb(0, 0, 0);
     box-sizing: border-box;
     display: none;
     left: 0;
@@ -123,6 +124,9 @@ article {
     article {
         padding: 2rem 1.5rem;
     }
+    .navbar-toggler {
+        display:none;
+    }
 }
 
 /* Bootstrap Icons Styling */
@@ -167,4 +171,248 @@ article {
 .sidebar .nav-link.active {
     background-color: rgba(255, 255, 255, 0.37);
     color: white !important;
+}
+
+
+.accordion {
+    max-width: 800px;
+    margin: 1rem auto;
+}
+
+.accordion-item {
+    transition: opacity 0.3s ease;
+}
+
+.empty-note {
+    opacity: 0.4; /* 40% transparency for empty notes */
+}
+
+.accordion-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+.edit-btn {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.edit-btn i.bi-pencil-square {
+    font-size: 1.5rem; /* Default size for edit icon */
+    color: #d7d7d7;
+    transition: font-size 0.2s ease, transform 0.2s ease;
+}
+
+.empty-note .edit-btn i.bi-pencil-square {
+    font-size: 2rem; /* Larger icon for empty notes */
+    margin-left: auto; /* Center by pushing to the right with flex */
+    margin-right: auto;
+    display: block;
+    text-align: center;
+}
+
+.edit-btn:hover i.bi-pencil-square {
+    color: white;
+}
+
+
+/* cards */
+
+.row-cols-md-3 .col {
+    display: flex;
+    justify-content: center; /* Center cards in the column */
+}
+
+.card {
+    width: 18rem; /* Fixed width as per example */
+    border: 1px solid #ccc; /* Outline for all cards */
+    transition: opacity 0.3s ease;
+}
+
+.placeholder-img {
+    height: 150px; /* Fixed height for placeholder image */
+    background-color: #e0e0e0; /* Gray background for placeholder */
+}
+
+.empty-card {
+    opacity: 0.4; /* 40% transparency for empty cards (except first) */
+}
+
+.first-card.empty-card {
+    opacity: 0.2; /* 20% transparency for the first empty card */
+}
+
+.card-body {
+    min-height: 150px; /* Consistent height for card body */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.card-body i.bi-file-plus {
+    font-size: 2rem; /* Size for the plus icon */
+    color: #666;
+}
+
+.card-title {
+    margin-bottom: 0.5rem;
+}
+
+.card-subtitle {
+    margin-bottom: 0.75rem;
+}
+
+.card-text {
+    margin-bottom: 0;
+}
+
+.login-section {
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.login-section h2 {
+    margin-bottom: 1rem;
+}
+
+.login-status {
+    font-size: 1.5rem;
+}
+
+/* ListView Styles */
+.row-cols-1 .col {
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    width: 18rem;
+    border: 1px solid #ccc;
+    transition: opacity 0.3s ease;
+}
+
+.placeholder-img {
+    height: 150px;
+    background-color: #e0e0e0;
+}
+
+.empty-card {
+    opacity: 0.4;
+}
+
+.card-body {
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.card-body i.bi-file-plus {
+    font-size: 2rem;
+    color: #666;
+}
+
+.card-actions {
+    margin-top: 1rem;
+}
+
+.list-group-item {
+    transition: background-color 0.2s ease;
+}
+
+.list-group-item:hover {
+    background-color: #f8f9fa;
+}
+
+.login-section {
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.login-section h2 {
+    margin-bottom: 1rem;
+}
+
+.login-status {
+    font-size: 1.5rem;
+}
+
+.status-controls {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.clear-storage-btn {
+    font-size: 1.2rem;
+    padding: 0.2rem 0.5rem;
+}
+
+.clear-storage-btn i {
+    color: #dc3545; /* Bootstrap danger color */
+}
+
+/* ListView Styles */
+.row-cols-1 .col {
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    width: 18rem;
+    border: 1px solid #ccc;
+    transition: opacity 0.3s ease;
+}
+
+.placeholder-img {
+    height: 150px;
+    background-color: #e0e0e0;
+}
+
+.empty-card {
+    opacity: 0.4;
+}
+
+.card-body {
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.card-body i.bi-file-plus {
+    font-size: 2rem;
+    color: #666;
+}
+
+.card-actions {
+    margin-top: 1rem;
+}
+
+.list-group-item {
+    transition: background-color 0.2s ease;
+}
+
+.list-group-item:hover {
+    background-color: #f8f9fa;
 }

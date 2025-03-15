@@ -1,4 +1,8 @@
-﻿<div class="navbar navbar-dark sticky-top">
+﻿@inject NavigationManager NavigationManager
+@inject AppState AppState
+@using E6Ko.Services
+
+<div class="navbar navbar-dark sticky-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">E6Ko</a>
         <button class="navbar-toggler" type="button" @onclick="ToggleNavMenu">
@@ -17,23 +21,23 @@
                     </NavLink>
                 </li>
                 <li class="nav-item">
-                    <NavLink class="nav-link" href="mainmenunote">
-                        <i class="bi bi-list-nested"></i> MainMenuNote
+                    <NavLink class="nav-link" href="notelist">
+                        <i class="bi bi-card-list"></i> NoteList
                     </NavLink>
                 </li>
                 <li class="nav-item">
-                    <NavLink class="nav-link" href="notelist">
-                        <i class="bi bi-plus-square-fill"></i> NoteList
+                    <NavLink class="nav-link" href="noteeditor">
+                        <i class="bi bi-pencil-square"></i> NoteEditor
                     </NavLink>
                 </li>
                 <li class="nav-item">
                     <NavLink class="nav-link" href="folderlist">
-                        <i class="bi bi-folder-fill"></i> FolderList
+                        <i class="bi bi-folder2-open"></i> FolderList
                     </NavLink>
                 </li>
                 <li class="nav-item">
                     <NavLink class="nav-link" href="foldereditor">
-                        <i class="bi bi-folder2-open"></i> FolderEditor
+                        <i class="bi bi-folder-plus"></i> FolderEditor
                     </NavLink>
                 </li>
             </ul>

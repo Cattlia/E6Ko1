@@ -1,12 +1,203 @@
 ﻿@page "/"
-
+@inject StorageService StorageService
+@inject NavigationManager Navigation
+@using E6Ko.Services
+@using E6Ko.Models
 <PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
+<!-- Login Placeholder -->
+<div class="login-section text-center mb-4">
+    <h2>Login to Access Your Notes</h2>
+    <button class="btn btn-primary">Login</button>
+    <div class="status-controls">
+        <i class="bi bi-info-circle login-status" style="@LoginStatusStyle"></i>
+        <button class="btn btn-outline-danger clear-storage-btn" @onclick="ClearLocalStorage">
+            <i class="bi bi-trash3"></i>
+        </button>
+    </div>
+</div>
 
-<h2>Welcome to your new app.</h2>
+<!-- ListView -->
+@if (AppState.IsLoggedIn)
+{
+    <!-- Logged-in view: 3 folders on the left, 4 notes per folder on the right -->
+    <div class="row">
+        <!-- Folders (Left) -->
+        <div class="col-md-4">
+            <h3>Folders</h3>
+            <div class="row row-cols-1 g-4">
+                @foreach (var folder in Folders.Take(3))
+                {
+                    <div class="col">
+                        <div class="card @(folder.IsEmpty ? "empty-card" : "")">
+                            <div class="card-img-top placeholder-img"></div>
+                            <div class="card-body">
+                                @if (folder.IsEmpty)
+                                {
+                                    <i class="bi bi-file-plus"></i>
+                                }
+                                else
+                                {
+                                    <h5 class="card-title">Folder@(folder.Id)</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">Subtitle for Folder@(folder.Id)</h6>
+                                    <p class="card-text">@folder.Content</p>
+                                    <!-- CRUD Actions -->
+                                    <div class="card-actions">
+                                        <button class="btn btn-outline-primary btn-sm me-2" @onclick="() => EditFolder(folder.Id)">Edit</button>
+                                        <button class="btn btn-outline-danger btn-sm" @onclick="() => DeleteFolder(folder.Id)">Delete</button>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <a href="/foldereditor" class="btn btn-primary mt-3">Create New Folder</a>
+        </div>
 
-<h3>test er best</h3>
+        <!-- Notes (Right) -->
+        <div class="col-md-8">
+            <h3>Notes</h3>
+            @if (Folders.Any())
+            {
+                @foreach (var folder in Folders.Take(3))
+                {
+                    <div class="mb-4">
+                        <h4>Notes in Folder@(folder.Id)</h4>
+                        <ul class="list-group">
+                            @foreach (var note in Notes.Where(n => n.FolderId == folder.Id).Take(4))
+                            {
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <span>Note@(note.Id) - @(note.Text ?? "Empty")</span>
+                                    <div>
+                                        <button class="btn btn-outline-primary btn-sm me-2" @onclick="() => EditNote(note.Id)">Edit</button>
+                                        <button class="btn btn-outline-danger btn-sm" @onclick="() => DeleteNote(note.Id)">Delete</button>
+                                    </div>
+                                </li>
+                            }
+                            @if (!Notes.Any(n => n.FolderId == folder.Id))
+                            {
+                                <li class="list-group-item text-muted">No notes in this folder.</li>
+                            }
+                        </ul>
+                    </div>
+                }
+            }
+            else
+            {
+                <p class="text-muted">No folders available. Create a folder to add notes.</p>
+            }
+            <a href="/noteeditor" class="btn btn-primary mt-3">Create New Note</a>
+        </div>
+    </div>
+}
+else
+{
+    <!-- Logged-out view: Only show FolderList -->
+    <h3>Folders (Preview)</h3>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var folder in Folders.Take(3))
+        {
+            <div class="col">
+                <div class="card @(folder.IsEmpty ? "empty-card" : "")">
+                    <div class="card-img-top placeholder-img"></div>
+                    <div class="card-body">
+                        @if (folder.IsEmpty)
+                        {
+                            <i class="bi bi-file-plus"></i>
+                        }
+                        else
+                        {
+                            <h5 class="card-title">Folder@(folder.Id)</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Subtitle for Folder@(folder.Id)</h6>
+                            <p class="card-text">@folder.Content</p>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
 
+@code {
+    [CascadingParameter]
+    private AppState AppState { get; set; }
 
-så det så!
+    private List<Folder> Folders { get; set; } = new List<Folder>();
+    private List<Note> Notes { get; set; } = new List<Note>();
+    private string LoginStatusStyle => AppState.IsLoggedIn ? "color: green; position: absolute; top: 10px; right: 10px; font-size: 1.5rem;" : "color: red; position: absolute; top: 10px; right: 10px; font-size: 1.5rem;";
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Load data from LocalStorage on startup
+        Folders = await StorageService.GetFoldersAsync();
+        Notes = await StorageService.GetNotesAsync();
+
+        // Seed some initial data if empty (for testing)
+        if (!Folders.Any())
+        {
+            Folders = new List<Folder>
+            {
+                new Folder { Id = 1, Content = "Work" },
+                new Folder { Id = 2, Content = "Personal" },
+                new Folder { Id = 3, Content = "Ideas" }
+            };
+            await StorageService.SaveFoldersAsync(Folders);
+        }
+
+        if (!Notes.Any())
+        {
+            Notes = new List<Note>
+            {
+                new Note { Id = 1, FolderId = 1, Text = "Meeting with team" },
+                new Note { Id = 2, FolderId = 1, Text = "Project timeline" },
+                new Note { Id = 3, FolderId = 1, Text = "Budget review" },
+                new Note { Id = 4, FolderId = 1, Text = "Client feedback" },
+                new Note { Id = 5, FolderId = 2, Text = "Grocery list" },
+                new Note { Id = 6, FolderId = 2, Text = "Workout plan" },
+                new Note { Id = 7, FolderId = 2, Text = "Book list" },
+                new Note { Id = 8, FolderId = 2, Text = "Travel ideas" },
+                new Note { Id = 9, FolderId = 3, Text = "App concept" },
+                new Note { Id = 10, FolderId = 3, Text = "Design mockup" },
+                new Note { Id = 11, FolderId = 3, Text = "Feature brainstorm" },
+                new Note { Id = 12, FolderId = 3, Text = "Research notes" },
+                new Note { Id = 13, FolderId = null, Text = "Standalone note" }
+            };
+            await StorageService.SaveNotesAsync(Notes);
+        }
+    }
+
+    private async Task ClearLocalStorage()
+    {
+        await StorageService.ClearAllAsync();
+        Folders.Clear();
+        Notes.Clear();
+        StateHasChanged();
+    }
+
+    private void EditFolder(int id)
+    {
+        Navigation.NavigateTo($"/foldereditor/{id}");
+    }
+
+    private async Task DeleteFolder(int id)
+    {
+        Folders.RemoveAll(f => f.Id == id);
+        Notes.RemoveAll(n => n.FolderId == id);
+        await StorageService.SaveFoldersAsync(Folders);
+        await StorageService.SaveNotesAsync(Notes);
+        StateHasChanged();
+    }
+
+    private void EditNote(int id)
+    {
+        Navigation.NavigateTo($"/noteeditor/{id}");
+    }
+
+    private async Task DeleteNote(int id)
+    {
+        Notes.RemoveAll(n => n.Id == id);
+        await StorageService.SaveNotesAsync(Notes);
+        StateHasChanged();
+    }
+}

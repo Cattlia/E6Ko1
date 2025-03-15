@@ -28,10 +28,6 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Gokstad/AlgoritmerH24/Emne6SoftwareDesign/Innleveringsfolder/E6Konte/E6Ko/Pages/Counter.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Gokstad/AlgoritmerH24/Emne6SoftwareDesign/Innleveringsfolder/E6Konte/E6Ko/Pages/FolderEditor.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRm9sZGVyRWRpdG9yLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
@@ -44,20 +40,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Gokstad/AlgoritmerH24/Emne6SoftwareDesign/Innleveringsfolder/E6Konte/E6Ko/Pages/MainMenuNote.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFpbk1lbnVOb3RlLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Gokstad/AlgoritmerH24/Emne6SoftwareDesign/Innleveringsfolder/E6Konte/E6Ko/Pages/NoteEditor.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTm90ZUVkaXRvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Gokstad/AlgoritmerH24/Emne6SoftwareDesign/Innleveringsfolder/E6Konte/E6Ko/Pages/NoteList.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTm90ZUxpc3QucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Gokstad/AlgoritmerH24/Emne6SoftwareDesign/Innleveringsfolder/E6Konte/E6Ko/Pages/Weather.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2VhdGhlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Gokstad/AlgoritmerH24/Emne6SoftwareDesign/Innleveringsfolder/E6Konte/E6Ko/_Imports.razor]

@@ -1,6 +1,66 @@
 @page "/folderlist"
-
 <PageTitle>FolderList</PageTitle>
 
 <h1>FolderList</h1>
-<p>Folder here <span class="bi bi-bookmark-plus" aria-hidden="true"></span></p>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var folder in Folders)
+    {
+        <div class="col">
+            <div class="card @(folder.IsEmpty ? "empty-card" : "") @(folder.Id == 1 ? "first-card" : "")">
+                <div class="card-img-top placeholder-img"></div> <!-- Placeholder for image -->
+                <div class="card-body">
+                    @if (folder.IsEmpty)
+                    {
+                        <i class="bi bi-file-plus"></i>
+                    }
+                    else
+                    {
+                        <h5 class="card-title">Folder@(folder.Id)</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Subtitle for Folder@(folder.Id)</h6>
+                        <p class="card-text">@folder.Content</p>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    private class Folder
+    {
+        public int Id { get; set; }
+        public string? Content { get; set; } // Nullable content
+        public bool IsEmpty => string.IsNullOrWhiteSpace(Content);
+    }
+
+    private List<Folder> Folders { get; set; } = new List<Folder>
+    {
+        new Folder { Id = 1, Content = null }, // First card, empty
+        new Folder { Id = 2, Content = "Project Files" },
+        new Folder { Id = 3, Content = "Personal Notes" },
+        new Folder { Id = 4, Content = null },
+        new Folder { Id = 5, Content = null },
+        new Folder { Id = 6, Content = null }
+    };
+
+    protected override void OnInitialized()
+    {
+        UpdateFolders();
+    }
+
+    private void UpdateFolders()
+    {
+        var filledCount = Folders.Count(f => !f.IsEmpty);
+        Folders = Folders.Take(6).ToList(); // Limit to 6 cards per page
+
+        if (filledCount < 6 && Folders.Count < 6)
+        {
+            // Ensure 6 cards total, with the last being empty if needed
+            while (Folders.Count < 6)
+            {
+                Folders.Add(new Folder { Id = Folders.Count + 1, Content = null });
+            }
+        }
+    }
+}
