@@ -1,7 +1,7 @@
+/* Base Styles */
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
-
 
 .content {
     padding-top: 1.1rem;
@@ -125,7 +125,7 @@ article {
         padding: 2rem 1.5rem;
     }
     .navbar-toggler {
-        display:none;
+        display: none;
     }
 }
 
@@ -136,9 +136,9 @@ article {
     height: 1.25rem;
     margin-right: 0.75rem;
     top: -1px;
-    font-family: "bootstrap-icons" !important; /* Ensure font is applied */
-    color: #d7d7d7; /* Match sidebar text color */
-    vertical-align: middle; /* Align with text */
+    font-family: "bootstrap-icons" !important;
+    color: #d7d7d7;
+    vertical-align: middle;
 }
 
 /* Sidebar Enhancements */
@@ -173,81 +173,98 @@ article {
     color: white !important;
 }
 
-
+/* Accordion Styles */
 .accordion {
     max-width: 800px;
     margin: 1rem auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-height: 300px;
+    overflow-y: auto;
 }
 
-.accordion-item {
-    transition: opacity 0.3s ease;
+.accordion-button {
+    background-color: #f8f9fa;
+    transition: background-color 0.2s ease;
 }
 
-.empty-note {
-    opacity: 0.4; /* 40% transparency for empty notes */
+.accordion-button:hover, .accordion-button.active-note {
+    background-color: #e9ecef;
 }
 
-.accordion-body {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* Note Editor Styles */
+.note-editor {
+    border: 1px solid #ccc;
     padding: 1rem;
-}
-
-.edit-btn {
-    border: none;
-    background: none;
-    padding: 0;
-    cursor: pointer;
-}
-
-.edit-btn i.bi-pencil-square {
-    font-size: 1.5rem; /* Default size for edit icon */
-    color: #d7d7d7;
-    transition: font-size 0.2s ease, transform 0.2s ease;
-}
-
-.empty-note .edit-btn i.bi-pencil-square {
-    font-size: 2rem; /* Larger icon for empty notes */
-    margin-left: auto; /* Center by pushing to the right with flex */
-    margin-right: auto;
-    display: block;
-    text-align: center;
-}
-
-.edit-btn:hover i.bi-pencil-square {
-    color: white;
-}
-
-
-/* cards */
-
-.row-cols-md-3 .col {
+    border-radius: 5px;
+    min-height: 200px;
     display: flex;
-    justify-content: center; /* Center cards in the column */
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.note-editor.active-note {
+    border-color: #0d6efd;
+    box-shadow: 0 0 5px rgba(13, 110, 253, 0.5);
+}
+
+/* Vertical Carousel Styles */
+.vertical-carousel {
+    height: 240px; /* Matches NoteEditor.razor */
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-item {
+    height: 80px; /* Matches NoteEditor.razor */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-prev, .carousel-next {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 50%;
+}
+
+.carousel-prev {
+    top: -40px;
+}
+
+.carousel-next {
+    bottom: -40px;
+}
+
+/* Card Styles */
+.row-cols-md-3 .col, .row-cols-1 .col {
+    display: flex;
+    justify-content: center;
 }
 
 .card {
-    width: 18rem; /* Fixed width as per example */
-    border: 1px solid #ccc; /* Outline for all cards */
+    width: 18rem;
+    border: 1px solid #ccc;
     transition: opacity 0.3s ease;
 }
 
 .placeholder-img {
-    height: 150px; /* Fixed height for placeholder image */
-    background-color: #e0e0e0; /* Gray background for placeholder */
+    height: 150px;
+    background-color: #e0e0e0;
 }
 
 .empty-card {
-    opacity: 0.4; /* 40% transparency for empty cards (except first) */
-}
-
-.first-card.empty-card {
-    opacity: 0.2; /* 20% transparency for the first empty card */
+    opacity: 0.4;
 }
 
 .card-body {
-    min-height: 150px; /* Consistent height for card body */
+    min-height: 150px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -256,7 +273,7 @@ article {
 }
 
 .card-body i.bi-file-plus {
-    font-size: 2rem; /* Size for the plus icon */
+    font-size: 2rem;
     color: #666;
 }
 
@@ -272,57 +289,6 @@ article {
     margin-bottom: 0;
 }
 
-.login-section {
-    background-color: #f8f9fa;
-    padding: 2rem;
-    border-radius: 8px;
-    position: relative;
-    margin-bottom: 2rem;
-}
-
-.login-section h2 {
-    margin-bottom: 1rem;
-}
-
-.login-status {
-    font-size: 1.5rem;
-}
-
-/* ListView Styles */
-.row-cols-1 .col {
-    display: flex;
-    justify-content: center;
-}
-
-.card {
-    width: 18rem;
-    border: 1px solid #ccc;
-    transition: opacity 0.3s ease;
-}
-
-.placeholder-img {
-    height: 150px;
-    background-color: #e0e0e0;
-}
-
-.empty-card {
-    opacity: 0.4;
-}
-
-.card-body {
-    min-height: 150px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.card-body i.bi-file-plus {
-    font-size: 2rem;
-    color: #666;
-}
-
 .card-actions {
     margin-top: 1rem;
 }
@@ -335,6 +301,7 @@ article {
     background-color: #f8f9fa;
 }
 
+/* Login Section Styles */
 .login-section {
     background-color: #f8f9fa;
     padding: 2rem;
@@ -347,18 +314,26 @@ article {
     margin-bottom: 1rem;
 }
 
-.login-status {
-    font-size: 1.5rem;
-}
-
 .status-controls {
     position: absolute;
     top: 10px;
     right: 10px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row; /* Changed to row to place icon and button side by side */
     align-items: center;
-    gap: 10px;
+    gap: 15px; /* Increased gap for better spacing */
+}
+
+.login-status {
+    font-size: 1.5rem;
+}
+
+.login-status.logged-in {
+    color: green;
+}
+
+.login-status.logged-out {
+    color: red;
 }
 
 .clear-storage-btn {
@@ -367,52 +342,34 @@ article {
 }
 
 .clear-storage-btn i {
-    color: #dc3545; /* Bootstrap danger color */
+    color: #dc3545;
 }
 
-/* ListView Styles */
-.row-cols-1 .col {
-    display: flex;
-    justify-content: center;
-}
-
-.card {
-    width: 18rem;
-    border: 1px solid #ccc;
-    transition: opacity 0.3s ease;
-}
-
+/* Carousel Placeholder */
 .placeholder-img {
     height: 150px;
     background-color: #e0e0e0;
 }
 
-.empty-card {
-    opacity: 0.4;
+/* Larger Icons for Folder Cards */
+.icon-large {
+    font-size: 2.5rem; /* 2x larger than other icons (1.25rem in .bi) */
 }
 
-.card-body {
-    min-height: 150px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.card-body i.bi-file-plus {
-    font-size: 2rem;
-    color: #666;
-}
-
-.card-actions {
-    margin-top: 1rem;
-}
-
-.list-group-item {
-    transition: background-color 0.2s ease;
-}
-
-.list-group-item:hover {
+/* Under Construction Section */
+.under-construction {
     background-color: #f8f9fa;
+    min-height: 200px;
+    width: 100%;
+}
+
+/* Notes Accordion */
+.accordion-button .bi-plus {
+    transition: color 0.3s ease;
+}
+
+/* Ensure accordion button layout works with the + icon */
+.accordion-button {
+    position: relative;
+    padding-right: 3rem; /* Space for the + button */
 }

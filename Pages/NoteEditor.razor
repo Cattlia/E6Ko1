@@ -1,0 +1,214 @@
+@page "/noteeditor"
+@inject StorageService StorageService
+@inject NavigationManager Navigation
+@inject AppState AppState
+@using E6Ko.Services
+@using E6Ko.Models
+@using Microsoft.AspNetCore.Components.Forms
+
+<PageTitle>Note Editor</PageTitle>
+
+<div class="container mt-4">
+    <!-- Accordion for Notes (Top) -->
+    <div class="accordion" id="noteAccordion" style="max-height: 300px; overflow-y: auto;">
+        @foreach (var note in DisplayedNotes.Take(6))
+        {
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading@(note.Id)">
+                    <button class="accordion-button @(ActiveNote?.Id == note.Id ? "active-note" : "")" type="button" @onclick="() => SelectNote(note)">
+                        Note@(note.Id) - @(note.Text ?? "Empty") @(note.FolderId.HasValue ? $"(Folder {note.FolderId})" : "(No Folder)")
+                    </button>
+                    <button class="btn btn-danger btn-sm ms-2 position-absolute end-0 top-0 mt-2 me-2" @onclick="() => DeleteNote(note.Id)">Delete</button>
+                </h2>
+                <div class="accordion-collapse collapse @(ActiveNote?.Id == note.Id ? "show" : "")" aria-labelledby="heading@(note.Id)" data-bs-parent="#noteAccordion">
+                    <div class="accordion-body">
+                        @note.Text
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Editing Area (Left) -->
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="note-editor @(ActiveNote == null ? "" : "active-note")" style="opacity: @(ActiveNote == null ? 0.4 : 1); transition: opacity 0.3s ease;"
+                 @onclick="() => { if (ActiveNote == null) SelectNote(new Note()); }">
+                <textarea @bind="ActiveNoteText" class="form-control" rows="5" placeholder="Enter note text..." disabled="@(ActiveNote == null)" style="resize: none;"></textarea>
+                <button class="btn btn-primary mt-2" @onclick="NewNote">New Note</button>
+            </div>
+        </div>
+
+        <!-- Vertical Carousel of Folders (Right) -->
+        <div class="col-md-6">
+            <div class="vertical-carousel">
+                @for (int i = 0; i < Math.Min(3, DisplayedFolders.Count); i++)
+                {
+                    var folder = DisplayedFolders[i];
+                    <div class="carousel-item @(i == 0 ? "active" : "")">
+                        <div class="card h-100">
+                            <div class="card-body d-flex align-items-center justify-content-between">
+                                <button class="btn btn-success" @onclick="() => AddNoteToFolder(folder.Id)">Add Note to This Folder</button>
+                                <h5 class="card-title mb-0">@folder.Content</h5>
+                            </div>
+                        </div>
+                    </div>
+                }
+                @if (DisplayedFolders.Count > 0)
+                {
+                    <button class="btn btn-secondary carousel-prev" @onclick="PrevFolder">↑</button>
+                    <button class="btn btn-secondary carousel-next" @onclick="NextFolder">↓</button>
+                }
+            </div>
+            <button class="btn btn-primary mt-2" @onclick="SaveNote">Save/Create Note</button>
+        </div>
+    </div>
+
+    <!-- Filter Toggle -->
+    <div class="mt-3">
+        <div class="form-check">
+            <InputRadio Name="noteFilter" @bind-Value="FilterMode" />
+            <label for="allNotes">All Notes</label>
+        </div>
+        <div class="form-check">
+            <InputRadio Name="noteFilter" @bind-Value="FilterMode" />
+            <label for="inFolders">Notes in Folders</label>
+        </div>
+        <div class="form-check">
+            <InputRadio Name="noteFilter" @bind-Value="FilterMode" />
+            <label for="withoutFolders">Notes Without Folders</label>
+        </div>
+    </div>
+</div>
+
+@code {
+    private List<Note> Notes { get; set; } = new List<Note>();
+    private List<Folder> Folders { get; set; } = new List<Folder>();
+    private Note? ActiveNote { get; set; }
+    private string? ActiveNoteText { get; set; }
+    private int FolderIndex { get; set; } = 0;
+    private List<Note> DisplayedNotes { get; set; } = new List<Note>();
+    private List<Folder> DisplayedFolders { get; set; } = new List<Folder>();
+    private string FilterMode { get; set; } = "all"; // Tracks the selected filter
+
+    protected override async Task OnInitializedAsync()
+    {
+        Notes = await StorageService.GetNotes();
+        Folders = await StorageService.GetFolders();
+        FilterNotes(); // Initialize with all notes
+        UpdateDisplayedFolders();
+    }
+
+    private void FilterNotes()
+    {
+        DisplayedNotes = FilterMode switch
+        {
+            "inFolders" => Notes.Where(n => n.FolderId.HasValue).ToList(),
+            "withoutFolders" => Notes.Where(n => !n.FolderId.HasValue).ToList(),
+            _ => Notes.ToList()
+        };
+        MoveToTop(ActiveNote);
+        StateHasChanged();
+    }
+
+    private void SelectNote(Note note)
+    {
+        ActiveNote = note;
+        ActiveNoteText = note.Text;
+        MoveToTop(note);
+        StateHasChanged();
+    }
+
+    private async Task SaveNote()
+    {
+        if (ActiveNote == null)
+        {
+            ActiveNote = new Note();
+        }
+        ActiveNote.Text = ActiveNoteText;
+        if (ActiveNote.Id == 0)
+        {
+            await StorageService.CreateNote(ActiveNote); // POST
+        }
+        else
+        {
+            await StorageService.UpdateNote(ActiveNote); // PUT
+        }
+        Notes = await StorageService.GetNotes();
+        DisplayedNotes = Notes.ToList();
+        FilterNotes();
+        MoveToTop(ActiveNote);
+        StateHasChanged();
+    }
+
+    private async Task AddNoteToFolder(int folderId)
+    {
+        if (ActiveNote != null)
+        {
+            ActiveNote.FolderId = folderId;
+            await StorageService.UpdateNote(ActiveNote); // PUT
+            Notes = await StorageService.GetNotes();
+            DisplayedNotes = Notes.ToList();
+            FilterNotes();
+            MoveToTop(ActiveNote);
+            StateHasChanged();
+        }
+    }
+
+    private async Task NewNote()
+    {
+        if (ActiveNote != null && !string.IsNullOrWhiteSpace(ActiveNoteText))
+        {
+            await SaveNote(); // Save the current note first
+        }
+        ActiveNote = new Note();
+        ActiveNoteText = null;
+        MoveToTop(ActiveNote);
+        StateHasChanged();
+    }
+
+    private void MoveToTop(Note? note)
+    {
+        if (note != null && DisplayedNotes.Contains(note))
+        {
+            DisplayedNotes.Remove(note);
+            DisplayedNotes.Insert(0, note);
+        }
+        else if (note != null)
+        {
+            DisplayedNotes.Insert(0, note);
+        }
+    }
+
+    private void PrevFolder()
+    {
+        FolderIndex = Math.Max(0, FolderIndex - 1);
+        UpdateDisplayedFolders();
+    }
+
+    private void NextFolder()
+    {
+        FolderIndex = Math.Min(Folders.Count - 3, FolderIndex + 1);
+        UpdateDisplayedFolders();
+    }
+
+    private void UpdateDisplayedFolders()
+    {
+        DisplayedFolders = Folders.Skip(FolderIndex).Take(3).ToList();
+        StateHasChanged();
+    }
+
+    private async Task DeleteNote(int id)
+    {
+        await StorageService.DeleteNote(id); // DELETE
+        Notes = await StorageService.GetNotes();
+        DisplayedNotes = Notes.ToList();
+        if (ActiveNote?.Id == id)
+        {
+            ActiveNote = null;
+            ActiveNoteText = null;
+        }
+        FilterNotes();
+        StateHasChanged();
+    }
+}

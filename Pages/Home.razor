@@ -10,7 +10,7 @@
     <h2>Login to Access Your Notes</h2>
     <button class="btn btn-primary">Login</button>
     <div class="status-controls">
-        <i class="bi bi-info-circle login-status" style="@LoginStatusStyle"></i>
+        <i class="bi bi-info-circle login-status @(AppState?.IsLoggedIn ?? false ? "logged-in" : "logged-out")"></i>
         <button class="btn btn-outline-danger clear-storage-btn" @onclick="ClearLocalStorage">
             <i class="bi bi-trash3"></i>
         </button>
@@ -18,7 +18,7 @@
 </div>
 
 <!-- ListView -->
-@if (AppState.IsLoggedIn)
+@if (AppState?.IsLoggedIn ?? false)
 {
     <!-- Logged-in view: 3 folders on the left, 4 notes per folder on the right -->
     <div class="row">
@@ -121,19 +121,16 @@ else
 
 @code {
     [CascadingParameter]
-    private AppState AppState { get; set; }
+    private AppState? AppState { get; set; }
 
     private List<Folder> Folders { get; set; } = new List<Folder>();
     private List<Note> Notes { get; set; } = new List<Note>();
-    private string LoginStatusStyle => AppState.IsLoggedIn ? "color: green; position: absolute; top: 10px; right: 10px; font-size: 1.5rem;" : "color: red; position: absolute; top: 10px; right: 10px; font-size: 1.5rem;";
 
     protected override async Task OnInitializedAsync()
     {
-        // Load data from LocalStorage on startup
-        Folders = await StorageService.GetFoldersAsync();
-        Notes = await StorageService.GetNotesAsync();
+        Folders = await StorageService.GetFolders();
+        Notes = await StorageService.GetNotes();
 
-        // Seed some initial data if empty (for testing)
         if (!Folders.Any())
         {
             Folders = new List<Folder>
@@ -142,7 +139,7 @@ else
                 new Folder { Id = 2, Content = "Personal" },
                 new Folder { Id = 3, Content = "Ideas" }
             };
-            await StorageService.SaveFoldersAsync(Folders);
+            await StorageService.SaveFolders(Folders);
         }
 
         if (!Notes.Any())
@@ -163,7 +160,7 @@ else
                 new Note { Id = 12, FolderId = 3, Text = "Research notes" },
                 new Note { Id = 13, FolderId = null, Text = "Standalone note" }
             };
-            await StorageService.SaveNotesAsync(Notes);
+            await StorageService.SaveNotes(Notes);
         }
     }
 
@@ -184,8 +181,8 @@ else
     {
         Folders.RemoveAll(f => f.Id == id);
         Notes.RemoveAll(n => n.FolderId == id);
-        await StorageService.SaveFoldersAsync(Folders);
-        await StorageService.SaveNotesAsync(Notes);
+        await StorageService.SaveFolders(Folders);
+        await StorageService.SaveNotes(Notes);
         StateHasChanged();
     }
 
@@ -197,7 +194,7 @@ else
     private async Task DeleteNote(int id)
     {
         Notes.RemoveAll(n => n.Id == id);
-        await StorageService.SaveNotesAsync(Notes);
+        await StorageService.SaveNotes(Notes);
         StateHasChanged();
     }
 }
